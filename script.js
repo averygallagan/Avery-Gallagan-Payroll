@@ -7,13 +7,16 @@ employeesArray = []
   function collectEmployees() {
     // TODO: Get user input to create and return an array of employee object
     const addNew = true;
+    // The while loop ensures that as long as the user hits continue, the function will keep running
     while (addNew) {
     const employees = {
       firstName: window.prompt("Enter First Name"),
       lastName: window.prompt("Enter Last Name"),
+      //parseFloat changes a string to a number
       salary: parseFloat(window.prompt("Enter Salary")),
     };
     console.log(employees)
+    //This adds the employee data to the array of employees
     employeesArray.push(employees)
     console.log(employeesArray)
     const shouldAddNew = window.confirm("Would you like to add another employee?");
@@ -28,7 +31,9 @@ employeesArray = []
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
   let totalSalary = 0;
+  //the foreach loop will do said function for each employee in the employeesArray
     employeesArray.forEach(employee => {
+      // += will sum each employee salary and store it in the variable total salary
         totalSalary += employee.salary;
     });
     const averageSalary = totalSalary / employeesArray.length;
@@ -38,6 +43,8 @@ const displayAverageSalary = function(employeesArray) {
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
+  //This random generator will select a random number between one and zero then multiply that by the number of employees
+  //Then will be assigned to an employee in the array
   const randomNum = Math.floor(Math.random()* employeesArray.length);
   const randomEmployee = employeesArray[randomNum];
   console.log(`The randomly selected employee is ${randomEmployee.firstName} ${randomEmployee.lastName}`)
