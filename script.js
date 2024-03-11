@@ -6,27 +6,36 @@ employeesArray = []
 // Collect employee data
   function collectEmployees() {
     // TODO: Get user input to create and return an array of employee object
-
+    const addNew = true;
+    while (addNew) {
     const employees = {
       firstName: window.prompt("Enter First Name"),
       lastName: window.prompt("Enter Last Name"),
-      salary: window.prompt("Enter Salary"),
-    }
+      salary: parseFloat(window.prompt("Enter Salary")),
+    };
     console.log(employees)
     employeesArray.push(employees)
     console.log(employeesArray)
-    addNew = window.confirm("Would you like to add another employee?");
+    const shouldAddNew = window.confirm("Would you like to add another employee?");
+    if (!shouldAddNew) {
+      break;
+    }
+  }
     return employeesArray;
   }
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
   // TODO: Calculate and display the average salary
+  
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
   // TODO: Select and display a random employee
+  const randomNum = Math.floor(Math.random()* employeesArray.length);
+  const randomEmployee = employeesArray[randomNum];
+  console.log(randomEmployee)
 }
 
 
@@ -82,13 +91,13 @@ const trackEmployeeData = function() {
 
   getRandomEmployee(employees);
 
-  // employees.sort(function(a,b) {
-  //   if (a.lastName < b.lastName) {
-  //     return -1;
-  //   } else {
-  //     return 1;
-  //   }
-  // });
+  employees.sort(function(a,b) {
+    if (a.lastName < b.lastName) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 
   displayEmployees(employees);
 }
